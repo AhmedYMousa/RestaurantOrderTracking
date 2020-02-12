@@ -1,1 +1,17 @@
-<p>order-form works!</p>
+<form (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <div class="control-label">Order #</div>
+    <input
+      type="text"
+      class="form-control"
+      [(ngModel)]="order.orderNumber"
+      name="orderNumber"
+    />
+    <span *ngIf="isValid" class="alert alert-danger"
+      >Please enter the order number</span
+    >
+  </div>
+  <div class="form-group">
+    <input type="submit" value="Add" class="btn btn-outline-primary" />
+  </div>
+</form>

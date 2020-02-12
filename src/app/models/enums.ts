@@ -1,6 +1,8 @@
-enum orderStatus{
-    Created=1,
-    InProgress,
-    Completed,
-    Cancelled        
+export enum orderStatus {
+  Created = "Created",
+  InProgress = "InProgress",
+  Completed = "Completed",
+  Cancelled = "Cancelled",
+  Received = "Received",
+  Deleted = "Deleted"
 }

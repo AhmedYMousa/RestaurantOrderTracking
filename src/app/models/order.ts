@@ -1,6 +1,7 @@
 export class Order {
-    id:number;
-    status:string;
-    dateCreated:Date;
-    dateCompleted:Date;
+  id?: string;
+  orderNumber?: string;
+  status?: string;
+  dateCreated?: Date;
+  dateUpdated?: Date;
 }
