@@ -3,16 +3,17 @@ import { DataService } from "src/app/services/data.service";
 import { Order } from "src/app/models/order";
 import { Observable } from "rxjs";
 import { orderStatus } from "../../models/enums";
+import { AuthService } from "src/app/services/auth.service";
 
 @Component({
-  selector: "app-order-summary",
-  templateUrl: "./order-summary.component.html",
-  styleUrls: ["./order-summary.component.css"]
+  selector: "app-admin",
+  templateUrl: "./admin.component.html",
+  styleUrls: ["./admin.component.css"]
 })
-export class OrderSummaryComponent implements OnInit {
+export class AdminComponent implements OnInit {
   orders: Order[];
 
-  constructor(private data: DataService) {}
+  constructor(private data: DataService, private auth: AuthService) {}
 
   ngOnInit() {
     this.data.getOrders().subscribe(orders => {
@@ -31,6 +32,9 @@ export class OrderSummaryComponent implements OnInit {
   receiveOrder(event, order: Order) {
     order.status = orderStatus.Received.toString();
     this.data.updateOrder(order);
+  }
+  SignOut() {
+    this.auth.LogOut();
   }
   // deleteOrder(order: Order) {
   //   this.data.deleteOrder(order);

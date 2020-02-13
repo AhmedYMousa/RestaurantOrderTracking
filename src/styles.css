@@ -1,1 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
+.statusTag {
+  display: inline-block;
+  padding: 10px;
+  border-radius: 5px;
+  color: #fff;
+}
+.Created {
+  background-color: var(--primary);
+}
+.Completed {
+  background-color: var(--teal);
+}
+
+.Cancelled {
+  background-color: var(--danger);
+}
+
+.InProgress {
+  background-color: var(--info);
+}
+.Received {
+  background-color: var(--secondary);
+  text-decoration: line-through;
+}

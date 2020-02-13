@@ -4,19 +4,21 @@
     class="table table-bordered table-striped"
     *ngIf="orders?.length > 0; else noOrders"
   >
-    <thead>
+    <thead class="bg-dark text-white">
       <tr>
-        <th>Id</th>
-        <th>orderNumber</th>
+        <th>Order #</th>
         <th>status</th>
         <th>Action</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let order of orders">
-        <td>{{ order.id }}</td>
         <td>{{ order.orderNumber }}</td>
-        <td>{{ order.status }}</td>
+        <td>
+          <span [ngClass]="[order.status]" class="statusTag">{{
+            order.status
+          }}</span>
+        </td>
         <th>
           <span
             class="btn btn-outline-danger"
@@ -46,4 +48,8 @@
   <ng-template #noOrders>
     No orders availabe
   </ng-template>
+</div>
+
+<div>
+  <button (click)="SignOut()">SignOut</button>
 </div>

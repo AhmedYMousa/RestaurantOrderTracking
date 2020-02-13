@@ -12,7 +12,6 @@ export const environment = {
     storageBucket: "order-tracking-44207.appspot.com",
     messagingSenderId: "741737636364",
     appId: "1:741737636364:web:9257d9832185806d62c429"
-
   }
 };
 
