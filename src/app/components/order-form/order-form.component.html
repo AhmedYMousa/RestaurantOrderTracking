@@ -1,13 +1,13 @@
 <form (ngSubmit)="onSubmit()">
   <div class="form-group">
-    <div class="control-label">Order #</div>
+    <label class="control-label">Order #</label>
     <input
       type="text"
       class="form-control"
       [(ngModel)]="order.orderNumber"
       name="orderNumber"
     />
-    <span *ngIf="isValid" class="alert alert-danger"
+    <span *ngIf="isValid" class="alert alert-danger form-control mt-1"
       >Please enter the order number</span
     >
   </div>

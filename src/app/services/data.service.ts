@@ -5,7 +5,9 @@ import {
   AngularFirestoreCollection,
   AngularFirestoreDocument
 } from "angularfire2/firestore";
-import { Observable } from "rxjs";
+import { Observable, from } from "rxjs";
+import { not } from "@angular/compiler/src/output/output_ast";
+import { orderStatus } from "../models/enums";
 
 @Injectable({
   providedIn: "root"
@@ -17,7 +19,10 @@ export class DataService {
 
   constructor(private firestore: AngularFirestore) {
     this.ordersCollection = this.firestore.collection("orders", refs => {
-      return refs.orderBy("orderNumber", "desc");
+      return refs
+        .where("isFinished", "==", false)
+        .where("dateCreated", "==", new Date().toLocaleDateString())
+        .orderBy("orderNumber", "desc");
     });
     this.orders = this.ordersCollection.valueChanges({ idField: "id" });
   }
@@ -30,14 +35,9 @@ export class DataService {
     this.ordersCollection.add(order);
   }
   updateOrder(order: Order) {
-    order.dateUpdated = new Date();
+    order.dateUpdated = new Date().toLocaleDateString();
     this.orderDoc = this.firestore.collection("orders").doc(order.id);
     this.orderDoc.update(order);
-    /**
-     * db.collection("cities").doc("DC").update({
-    capital: true
-});
-    */
   }
   // deleteOrder(order: Order) {
   //   this.firestore.doc("orders/" + order.id).delete();

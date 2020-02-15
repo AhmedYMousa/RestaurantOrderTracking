@@ -1,55 +1,66 @@
-<div class="container">
-  <app-order-form></app-order-form>
-  <table
-    class="table table-bordered table-striped"
-    *ngIf="orders?.length > 0; else noOrders"
-  >
-    <thead class="bg-dark text-white">
-      <tr>
-        <th>Order #</th>
-        <th>status</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let order of orders">
-        <td>{{ order.orderNumber }}</td>
-        <td>
-          <span [ngClass]="[order.status]" class="statusTag">{{
-            order.status
-          }}</span>
-        </td>
-        <th>
-          <span
-            class="btn btn-outline-danger"
-            title="cancel"
-            (click)="cancelOrder($event, order)"
-            ><i class="fa fa-window-close"></i>
-          </span>
-          &nbsp;
-          <span
-            class="btn btn-outline-primary"
-            title="complete"
-            (click)="completelOrder($event, order)"
-            ><i class="fa fa-check-circle"></i
-          ></span>
-          &nbsp;
-          <span
-            class="btn btn-outline-success"
-            title="received"
-            (click)="receiveOrder($event, order)"
-          >
-            <i class="fa fa-font-awesome"></i
-          ></span>
-        </th>
-      </tr>
-    </tbody>
-  </table>
-  <ng-template #noOrders>
-    No orders availabe
-  </ng-template>
-</div>
-
-<div>
-  <button (click)="SignOut()">SignOut</button>
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Fast Burger's</a>
+  <button (click)="SignOut()" class="btn btn-outline-secondary text-white">
+    SignOut
+  </button>
+</nav>
+<div class="mt-5">
+  <div class="container bordered">
+    <app-order-form></app-order-form>
+    <table
+      class="table table-bordered table-striped"
+      *ngIf="orders?.length > 0; else noOrders"
+    >
+      <thead class="bg-dark text-white">
+        <tr>
+          <th>Order #</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of orders">
+          <td>{{ order.orderNumber }}</td>
+          <td>
+            <span [ngClass]="[order.status]" class="statusTag">{{
+              order.status
+            }}</span>
+          </td>
+          <th>
+            <span
+              class="btn btn-outline-info"
+              title="inprogress"
+              (click)="inProgresslOrder($event, order)"
+              ><i class="fa fa-list"></i
+            ></span>
+            &nbsp;
+            <span
+              class="btn btn-outline-primary"
+              title="complete"
+              (click)="completelOrder($event, order)"
+              ><i class="fa fa-check-circle"></i
+            ></span>
+            &nbsp;
+            <span
+              class="btn btn-outline-success"
+              title="received"
+              (click)="receiveOrder($event, order)"
+            >
+              <i class="fa fa-font-awesome"></i
+            ></span>
+            &nbsp;
+            <span
+              class="btn btn-outline-danger"
+              title="cancel"
+              (click)="cancelOrder($event, order)"
+              ><i class="fa fa-window-close"></i>
+            </span>
+          </th>
+        </tr>
+      </tbody>
+    </table>
+    <ng-template #noOrders>
+      No orders availabe
+    </ng-template>
+  </div>
 </div>

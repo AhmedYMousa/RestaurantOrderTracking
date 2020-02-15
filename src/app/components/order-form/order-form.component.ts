@@ -11,7 +11,9 @@ export class OrderFormComponent implements OnInit {
   order: Order = {
     orderNumber: "",
     status: "",
-    dateCreated: null
+    dateCreated: null,
+    dateUpdated: null,
+    isFinished: false
   };
 
   isValid: boolean;
@@ -24,7 +26,7 @@ export class OrderFormComponent implements OnInit {
   onSubmit() {
     if (this.order.orderNumber != "") {
       this.order.status = "Created";
-      this.order.dateCreated = new Date();
+      this.order.dateCreated = new Date().toLocaleDateString();
       this.order.dateUpdated = this.order.dateCreated;
       this.data.addOrder(this.order);
       this.clearForm();
@@ -34,8 +36,6 @@ export class OrderFormComponent implements OnInit {
   }
   clearForm(): void {
     this.order.orderNumber = "";
-    this.order.status = "Created";
-    this.order.dateCreated = new Date();
     this.isValid = false;
   }
 }

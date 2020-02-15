@@ -26,17 +26,22 @@ export class AuthService {
   }
 
   Login(login: Login) {
-    this.afAuth.auth
-      .signInWithEmailAndPassword(login.email, login.password)
-      .then(() => {
-        this.router.navigate(["admin"]);
-      })
-      .catch(function(error) {
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        console.log(errorCode);
-        console.log(errorMessage);
-      });
+    return new Promise<any>((resolve, reject) => {
+      this.afAuth.auth
+        .signInWithEmailAndPassword(login.email, login.password)
+        .then(res => {
+          resolve(res);
+          setTimeout(() => {
+            this.router.navigate(["/admin"]);
+          }, 500);
+        })
+        .catch(error => {
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          console.log(errorCode);
+          console.log(errorMessage);
+        });
+    });
   }
   Register() {
     // return new Promise<any>((resolve, reject) => {

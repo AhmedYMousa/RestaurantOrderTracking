@@ -1,3 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: #f7f7f7;
+}
+.container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px 5px rgba(0, 0, 0, 0.03);
+}
 /* You can add global styles to this file, and also import other style files */
 .statusTag {
   display: inline-block;
@@ -9,7 +23,7 @@
   background-color: var(--primary);
 }
 .Completed {
-  background-color: var(--teal);
+  background-color: var(--primary);
 }
 
 .Cancelled {
@@ -20,6 +34,10 @@
   background-color: var(--info);
 }
 .Received {
-  background-color: var(--secondary);
+  background-color: var(--teal);
   text-decoration: line-through;
+}
+.bordered{
+  border: 1px solid rgba(112, 110, 110, 0.25);
+  padding: 10px;
 }

@@ -20,6 +20,11 @@ export class AdminComponent implements OnInit {
       return (this.orders = orders);
     });
   }
+  inProgresslOrder(event, order: Order) {
+    let orderToUpdate = order;
+    orderToUpdate.status = orderStatus.InProgress.toString();
+    this.data.updateOrder(orderToUpdate);
+  }
   cancelOrder(event, order: Order) {
     let orderToUpdate = order;
     orderToUpdate.status = orderStatus.Cancelled.toString();
@@ -31,12 +36,12 @@ export class AdminComponent implements OnInit {
   }
   receiveOrder(event, order: Order) {
     order.status = orderStatus.Received.toString();
-    this.data.updateOrder(order);
+    order.isFinished = true;
+    setTimeout(() => {
+      this.data.updateOrder(order);
+    }, 1500);
   }
   SignOut() {
     this.auth.LogOut();
   }
-  // deleteOrder(order: Order) {
-  //   this.data.deleteOrder(order);
-  // }
 }
