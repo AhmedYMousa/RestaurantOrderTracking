@@ -1,9 +1,3 @@
-<nav class="navbar navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">Fast Burger's</a>
-  <button (click)="SignOut()" class="btn btn-outline-secondary text-white">
-    SignOut
-  </button>
-</nav>
 <div class="mt-5">
   <div class="container bordered">
     <app-order-form></app-order-form>
@@ -22,18 +16,9 @@
         <tr *ngFor="let order of orders">
           <td>{{ order.orderNumber }}</td>
           <td>
-            <span [ngClass]="[order.status]" class="statusTag">{{
-              order.status
-            }}</span>
+            <span class="statusTag">{{ order.status }}</span>
           </td>
-          <th>
-            <span
-              class="btn btn-outline-info"
-              title="inprogress"
-              (click)="inProgresslOrder($event, order)"
-              ><i class="fa fa-list"></i
-            ></span>
-            &nbsp;
+          <td>
             <span
               class="btn btn-outline-primary"
               title="complete"
@@ -55,7 +40,7 @@
               (click)="cancelOrder($event, order)"
               ><i class="fa fa-window-close"></i>
             </span>
-          </th>
+          </td>
         </tr>
       </tbody>
     </table>

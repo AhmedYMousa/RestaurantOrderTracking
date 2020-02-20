@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { DataService } from "src/app/services/data.service";
 import { Order } from "src/app/models/order";
-import { Observable } from "rxjs";
 import { orderStatus } from "../../models/enums";
 import { AuthService } from "src/app/services/auth.service";
 
@@ -26,9 +25,11 @@ export class AdminComponent implements OnInit {
     this.data.updateOrder(orderToUpdate);
   }
   cancelOrder(event, order: Order) {
-    let orderToUpdate = order;
-    orderToUpdate.status = orderStatus.Cancelled.toString();
-    this.data.updateOrder(orderToUpdate);
+    // let orderToUpdate = order;
+    // order.isFinished = true;
+    // orderToUpdate.status = orderStatus.Cancelled.toString();
+    // this.data.updateOrder(orderToUpdate);
+    this.data.deleteOrder(order);
   }
   completelOrder(event, order: Order) {
     order.status = orderStatus.Completed.toString();
@@ -40,8 +41,5 @@ export class AdminComponent implements OnInit {
     setTimeout(() => {
       this.data.updateOrder(order);
     }, 1500);
-  }
-  SignOut() {
-    this.auth.LogOut();
   }
 }

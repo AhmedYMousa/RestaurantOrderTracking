@@ -21,8 +21,8 @@ const appRoutes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(
-      appRoutes
-      // { enableTracing: true } // <-- debugging purposes only
+      appRoutes,
+      { useHash: true } //add hash sign to stop url problems when hosting the app.
     )
   ],
   exports: [RouterModule]

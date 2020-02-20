@@ -17,7 +17,7 @@ body {
   display: inline-block;
   padding: 10px;
   border-radius: 5px;
-  color: #fff;
+  color: #000;
 }
 .Created {
   background-color: var(--primary);
@@ -37,7 +37,7 @@ body {
   background-color: var(--teal);
   text-decoration: line-through;
 }
-.bordered{
+.bordered {
   border: 1px solid rgba(112, 110, 110, 0.25);
   padding: 10px;
 }

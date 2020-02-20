@@ -1,0 +1,32 @@
+@keyframes ready {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.4);
+  }
+}
+
+.ready {
+  animation-name: ready;
+  animation-duration: 1000ms;
+  animation-iteration-count: 10;
+}
+
+.bg-teal {
+  background-color: var(--teal);
+}
+
+.carousel-item > img {
+  width: 750px !important;
+}
+
+.w-caption-line {
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.3);
+  color: #fff;
+  border-radius: 5px;
+  text-align: center;
+  vertical-align: middle;
+  padding: 10px;
+}

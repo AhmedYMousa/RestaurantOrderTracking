@@ -16,6 +16,8 @@ import { AuthService } from "./services/auth.service";
 import { AngularFireAuthModule } from "angularfire2/auth";
 import { OrdersComponent } from "./components/orders/orders.component";
 import { AuthGuard } from "./guards/auth.guard";
+import { NavComponent } from "./components/nav/nav.component";
+import { HashLocationStrategy, LocationStrategy } from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { AuthGuard } from "./guards/auth.guard";
     LoginComponent,
     OrderFormComponent,
     PageNotFoundComponent,
-    OrdersComponent
+    OrdersComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,

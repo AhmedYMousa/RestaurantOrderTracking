@@ -1,0 +1,19 @@
+<nav class="navbar navbar-dark bg-dark" *ngIf="isAuth()">
+  <a class="navbar-brand" routerLink="/admin">Westeros Burger's</a>
+
+  <div class="nav-right">
+    <a class="navbar-brand" routerLink="/orders">Orders</a>
+    <a
+      *ngIf="!isAuth(); else notAuth"
+      class="btn btn-outline-secondary text-white"
+      routerLink="/login"
+      >Login</a
+    >
+
+    <ng-template #notAuth>
+      <button (click)="SignOut()" class="btn btn-outline-secondary text-white">
+        SignOut
+      </button>
+    </ng-template>
+  </div>
+</nav>

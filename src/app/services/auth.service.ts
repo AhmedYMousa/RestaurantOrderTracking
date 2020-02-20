@@ -33,7 +33,7 @@ export class AuthService {
           resolve(res);
           setTimeout(() => {
             this.router.navigate(["/admin"]);
-          }, 500);
+          }, 200);
         })
         .catch(error => {
           var errorCode = error.code;

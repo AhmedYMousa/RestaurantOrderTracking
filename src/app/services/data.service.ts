@@ -15,6 +15,7 @@ import { orderStatus } from "../models/enums";
 export class DataService {
   ordersCollection: AngularFirestoreCollection<Order>;
   orders: Observable<any[]>;
+  ordersComplete: Observable<any[]>;
   orderDoc: AngularFirestoreDocument<unknown>;
 
   constructor(private firestore: AngularFirestore) {
@@ -30,6 +31,9 @@ export class DataService {
   getOrders() {
     return this.orders;
   }
+  getOrdersComplete() {
+    return this.ordersComplete;
+  }
 
   addOrder(order: Order) {
     this.ordersCollection.add(order);
@@ -39,7 +43,8 @@ export class DataService {
     this.orderDoc = this.firestore.collection("orders").doc(order.id);
     this.orderDoc.update(order);
   }
-  // deleteOrder(order: Order) {
-  //   this.firestore.doc("orders/" + order.id).delete();
-  // }
+  deleteOrder(order: Order) {
+    this.orderDoc = this.firestore.collection("orders").doc(order.id);
+    this.orderDoc.delete();
+  }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { DataService } from "src/app/services/data.service";
 import { Order } from "src/app/models/order";
+import { orderStatus } from "../../models/enums";
 
 @Component({
   selector: "app-order-form",
@@ -25,7 +26,7 @@ export class OrderFormComponent implements OnInit {
 
   onSubmit() {
     if (this.order.orderNumber != "") {
-      this.order.status = "Created";
+      this.order.status = orderStatus.InProgress;
       this.order.dateCreated = new Date().toLocaleDateString();
       this.order.dateUpdated = this.order.dateCreated;
       this.data.addOrder(this.order);
